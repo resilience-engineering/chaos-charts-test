@@ -2,21 +2,21 @@ apiVersion: litmuchaos.io/v1alpha1
 kind: ChartServiceVersion
 metadata:
   createdAt: 2021-05-24T10:28:08Z
-  name: podtato-head
+  name: bank-of-anthos
   version: 0.1.0
   annotations:
-    categories: podtato-head
-    chartDescription: Injects chaos on podtato-head application
+    categories: bank-of-anthos
+    chartDescription: Injects chaos on bank-of-anthos application
 spec:
-  displayName: Podtato-head Chaos
+  displayName: bank-of-anthos Chaos
   categoryDescription: >
-    It install podtato-head application, inject chaos on podtato-head, uninstall the application 
+    It install bank-of-anthos application, inject chaos on bank-of-anthos, uninstall the application 
     and revert the chaos
   experiments:
     - pod-delete
   keywords:
     - Kubernetes
-    - Podtato-head
+    - bank-of-anthos
     - Pod
   platforms:
     - GKE
