@@ -1,18 +1,18 @@
 apiVersion: litmuschaos.io/v1alpha1
 description:
   message: |
-    Stopping an EC2 instance identified by ID.
+    it inject particuar pod cpu and then it  waits for the chaos duration and reverts the chaos
 kind: ChaosExperiment
 metadata:
-  name: ec2-terminate-by-id
+  name: pod-cpu-hog
   labels:
-    name: ec2-terminate-by-id
+    name: pod-cpu-hog
     app.kubernetes.io/part-of: litmus
     app.kubernetes.io/component: chaosexperiment
     app.kubernetes.io/version: latest
 spec:
   definition:
-    scope: Cluster
+    scope: Namespaced
     permissions:
       - apiGroups: 
           - "" 
@@ -30,9 +30,6 @@ spec:
           - "chaosengines" 
           - "chaosexperiments" 
           - "chaosresults" 
-          - "secrets" 
-          - "configmaps" 
-          - "nodes" 
         verbs: 
           - "create" 
           - "list" 
@@ -41,13 +38,11 @@ spec:
           - "update" 
           - "delete" 
           - "deletecollection" 
-          - "get" 
-          - "list" 
     image: "litmuschaos/py-runner:latest"
     imagePullPolicy: Always
     args:
     - -c
-    - python3 -u experiment ec2terminatebyid
+    - python3 -u experiment pod-cpu-hog
     command:
     - /bin/bash
     env:
@@ -63,36 +58,9 @@ spec:
 
     - name: RAMP_TIME
       value: ''
-
-    # enable it if the target instance is a part of self-managed nodegroup.
-    - name: MANAGED_NODEGROUP
-      value: 'disable'      
-
-    # Instance ID of the target ec2 instance
-    # Multiple IDs can also be provided as comma separated values ex: id1,id2
-    - name: EC2_INSTANCE_ID
-      value: ''
-
-    - name: REGION
-      value: ''
-
-    - name: SEQUENCE
-      value: 'parallel'
-
-    # Provide the path of aws credentials mounted from secret  
-    - name: AWS_SHARED_CREDENTIALS_FILE
-      value: '/tmp/cloud_config.yml'
-
-    # provide the LIB
-    # only litmus supported
-    - name: LIB
-      value: 'litmus'  
-          
+      
     labels:
-      name: ec2-terminate-by-id
+      name: pod-cpu-hog
       app.kubernetes.io/part-of: litmus
       app.kubernetes.io/component: experiment-job
-      app.kubernetes.io/version: latest
-    secrets:
-    - name: cloud-secret
-      mountPath: /tmp/
+      app.kubernetes.io/version: latest 
