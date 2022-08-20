@@ -32,4 +32,4 @@ spec:
   icon:
     - url: 
       mediatype: ""
-  chaosexpcrdlink: https://raw.githubusercontent.com/litmuschaos/chaos-charts/master/charts/generic/pod-cpu-hog/experiment.yaml
+  chaosexpcrdlink: https://github.com/resilience-engineering/chaos-charts-test/blob/master/charts/generic1/pod-cpu-hog/experiment.yaml
