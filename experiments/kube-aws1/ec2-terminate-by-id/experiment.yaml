@@ -4,9 +4,9 @@ description:
     Stopping an EC2 instance identified by ID.
 kind: ChaosExperiment
 metadata:
-  name: ec2-terminate-by-id
+  name: ec2-terminate-by-id 
   labels:
-    name: ec2-terminate-by-id
+    name: ec2-terminate-by-id 
     app.kubernetes.io/part-of: litmus
     app.kubernetes.io/component: chaosexperiment
     app.kubernetes.io/version: latest
@@ -47,7 +47,7 @@ spec:
     imagePullPolicy: Always
     args:
     - -c
-    - python3 -u experiment 
+    - python3 -u experiment
     command:
     - /bin/bash
     env:
@@ -59,32 +59,13 @@ spec:
       value: ''
 
     - name: LIB
-      value: 'litmus'
+      value: ''
 
     - name: RAMP_TIME
       value: ''
       
-      # enable it if the target instance is a part of self-managed nodegroup.
-    - name: MANAGED_NODEGROUP
-      value: 'disable'      
-
-    # Instance ID of the target ec2 instance
-    # Multiple IDs can also be provided as comma separated values ex: id1,id2
-    - name: EC2_INSTANCE_ID
-      value: ''
-
-    - name: SEQUENCE
-      value: 'parallel'
-
-    # Provide the path of aws credentials mounted from secret  
-    - name: AWS_SHARED_CREDENTIALS_FILE
-      value: '/tmp/cloud_config.yml'
-          
     labels:
-      name: ec2-terminate-by-id
+      name: ec2-terminate-by-id 
       app.kubernetes.io/part-of: litmus
       app.kubernetes.io/component: experiment-job
-      app.kubernetes.io/version: latest
-    secrets:
-    - name: cloud-secret
-      mountPath: /tmp/
+      app.kubernetes.io/version: latest 

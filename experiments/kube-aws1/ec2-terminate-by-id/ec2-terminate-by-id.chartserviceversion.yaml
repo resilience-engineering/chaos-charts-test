@@ -5,6 +5,7 @@ metadata:
   version: 0.1.0
   annotations:
     categories: kube-aws1
+
 spec:
   displayName: ec2-terminate-by-id 
   categoryDescription: >
@@ -30,4 +31,5 @@ spec:
   icon:
     - url: 
       mediatype: ""
-  chaosexpcrdlink: https://raw.githubusercontent.com/litmuschaos/chaos-charts/master/charts/kube-aws1/ec2-terminate-by-id/experiment.yaml
+  chaosexpcrdlink: https://raw.githubusercontent.com/litmuschaos/chaos-charts/master/charts/kube-aws1
+/ec2_terminate_by_id/experiment.yaml
