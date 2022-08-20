@@ -42,7 +42,7 @@ spec:
     imagePullPolicy: Always
     args:
     - -c
-    - python3 -u experiment pd-cpu-hog
+    - python3 -u experiment pod-cpu-hog
     command:
     - /bin/bash
     env:
