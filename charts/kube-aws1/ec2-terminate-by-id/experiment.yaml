@@ -4,9 +4,9 @@ description:
     Stopping an EC2 instance identified by ID.
 kind: ChaosExperiment
 metadata:
-  name: ec2-terminate-by-id 
+  name: ec2-terminate-by-id
   labels:
-    name: ec2-terminate-by-id 
+    name: ec2-terminate-by-id
     app.kubernetes.io/part-of: litmus
     app.kubernetes.io/component: chaosexperiment
     app.kubernetes.io/version: latest
@@ -65,7 +65,7 @@ spec:
       value: ''
       
     labels:
-      name: ec2-terminate-by-id 
+      name: ec2-terminate-by-id
       app.kubernetes.io/part-of: litmus
       app.kubernetes.io/component: experiment-job
       app.kubernetes.io/version: latest 
