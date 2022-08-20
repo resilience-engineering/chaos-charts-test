@@ -47,19 +47,19 @@ spec:
     imagePullPolicy: Always
     args:
     - -c
-    - python3 -u experiment ec2terminatebyid
+    - python3 -u experiment 
     command:
     - /bin/bash
     env:
 
     - name: TOTAL_CHAOS_DURATION
-      value: '30' 
+      value: '' 
 
     - name: CHAOS_INTERVAL
-      value: '10'
+      value: ''
 
     - name: LIB
-      value: 'litmus'
+      value: ''
 
     - name: RAMP_TIME
       value: ''

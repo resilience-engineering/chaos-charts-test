@@ -47,16 +47,16 @@ spec:
     imagePullPolicy: Always
     args:
     - -c
-    - python3 -u experiment ec2terminatebyid
+    - python3 -u experiment 
     command:
     - /bin/bash
     env:
 
     - name: TOTAL_CHAOS_DURATION
-      value: '30' 
+      value: '' 
 
     - name: CHAOS_INTERVAL
-      value: '10'
+      value: ''
 
     - name: LIB
       value: 'litmus'
@@ -64,11 +64,7 @@ spec:
     - name: RAMP_TIME
       value: ''
       
-     # Period to wait before and after injection of chaos in sec
-    - name: RAMP_TIME
-      value: ''
-
-    # enable it if the target instance is a part of self-managed nodegroup.
+      # enable it if the target instance is a part of self-managed nodegroup.
     - name: MANAGED_NODEGROUP
       value: 'disable'      
 
@@ -77,20 +73,12 @@ spec:
     - name: EC2_INSTANCE_ID
       value: ''
 
-    - name: REGION
-      value: ''
-
     - name: SEQUENCE
       value: 'parallel'
 
     # Provide the path of aws credentials mounted from secret  
     - name: AWS_SHARED_CREDENTIALS_FILE
       value: '/tmp/cloud_config.yml'
-
-    # provide the LIB
-    # only litmus supported
-    - name: LIB
-      value: 'litmus'  
           
     labels:
       name: ec2-terminate-by-id
