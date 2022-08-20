@@ -1,29 +1,43 @@
 apiVersion: litmuchaos.io/v1alpha1
 kind: ChartServiceVersion
 metadata:
-  name: kube-aws1 
-  version: 0.1.0
+  createdAt: 2019-09-26T10:28:08Z
+  name: kube-aws1
+
+  version: 0.1.16
   annotations:
-    categories: kube-aws1
+    categories: Kubernetes
+    chartDescription: Injects kube-aws1
+ kubernetes chaos 
 spec:
-  displayName:  chaos
+  displayName: Kube AWS
   categoryDescription: >
-    Stopping an EC2 instance identified by ID. 
+    kube-aws1
+ contains chaos to disrupt state of aws resources running part of kubernetes cluster
   experiments:
-  - ec2-terminate-by-id
-  keywords: 
-    - "AWS" 
-    - "EC2" 
-  maintainers: 
-    - name:gayathri 
-      email:egayathrir112@gmail.com 
-  minKubeVersion: 1.12.0 
-  provider: 
-    name: gayathri
-  links: 
-    - name:Documentation 
-      url:https://docs.litmuschaos.io/docs/getstarted/  
+    - ec2-terminate-by-id
+  keywords:
+    - AWS
+    - EC2
+    - EBS
+    - AZ
+  maintainers:
+    - name: gayathri
+      email: egayathrir112@gmail.com
+  links:
+    - name: Kubernetes Website
+      url: https://kubernetes.io
+    - name: Source Code
+      url: https://github.com/litmuschaos/litmus-go/tree/master/experiments/kube-aws1
+
+    - name: Source Code
+      url: https://github.com/litmuschaos/litmus-python/tree/master/experiments/aws_az
+    - name: Kubernetes Slack
+      url: https://slack.kubernetes.io/ 
   icon:
-    - url: 
-      mediatype: ""
-  chaosexpcrdlink: https://raw.githubusercontent.com/litmuschaos/chaos-charts/master/charts/kube-aws1/experiments.yaml
+    - url: https://raw.githubusercontent.com/litmuschaos/chaos-charts/master/charts/kube-aws1
+/icons/kube-aws1
+.png
+      mediatype: image/png
+  chaosexpcrdlink: https://raw.githubusercontent.com/litmuschaos/chaos-charts/master/charts/kube-aws1
+1/experiments.yaml
