@@ -10,7 +10,7 @@ metadata:
     chartDescription: Injects kube-aws1
  kubernetes chaos 
 spec:
-  displayName: Kube AWS
+  displayName: Kube AWS1
   categoryDescription: >
     kube-aws1
  contains chaos to disrupt state of aws resources running part of kubernetes cluster
@@ -19,8 +19,6 @@ spec:
   keywords:
     - AWS
     - EC2
-    - EBS
-    - AZ
   maintainers:
     - name: gayathri
       email: egayathrir112@gmail.com
