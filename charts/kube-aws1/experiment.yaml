@@ -50,7 +50,7 @@ spec:
     imagePullPolicy: Always
     args:
     - -c
-    - ./experiments -name ec2-terminate-by-id
+    - ./experiments -name 
     command:
     - /bin/bash
     env:

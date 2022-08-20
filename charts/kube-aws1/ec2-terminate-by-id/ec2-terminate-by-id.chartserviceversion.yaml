@@ -23,7 +23,7 @@ spec:
   chaosType: infra
   maintainers:
     - name: gayathri
-      email: egayathrir112@gmai.com
+      email: egayathrir112@gmail.com
   provider:
     name: Mayadata
   labels:
@@ -40,4 +40,4 @@ spec:
     - url: 
       mediatype: ""
 
-chaosexpcrdlink: https://raw.githubusercontent.com/litmuschaos/chaos-charts/master/charts/kube-aws1/ec2-terminate-by-id/experiment.yaml
+chaosexpcrdlink: https://raw.githubusercontent.com/resilience-engineering/chaos-charts-test/master/charts/kube-aws1/ec2-terminate-by-id/experiment.yaml

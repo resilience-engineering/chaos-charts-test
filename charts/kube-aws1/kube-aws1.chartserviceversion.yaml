@@ -37,5 +37,4 @@ spec:
 /icons/kube-aws1
 .png
       mediatype: image/png
-  chaosexpcrdlink: https://raw.githubusercontent.com/litmuschaos/chaos-charts/master/charts/kube-aws1
-1/experiments.yaml
+  chaosexpcrdlink: https://raw.githubusercontent.com/resilience-engineering/chaos-charts-test/master/charts/kube-aws1/experiment.yaml
