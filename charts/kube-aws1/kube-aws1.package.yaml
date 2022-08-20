@@ -1,5 +1,6 @@
 packageName: kube-aws1
+
 experiments:
-  - name: ec2-terminate-by-id
-    CSV: ec2-terminate-by-id.chartserviceversion.yaml
-    desc: "ec2-terminate-by-id"
+  - name: ec2-terminate-by-id 
+    CSV: ec2-terminate-by-id .chartserviceversion.yaml
+    desc: "ec2-terminate-by-id "
