@@ -30,6 +30,6 @@ spec:
     - name:Documentation 
       url:https://docs.litmuschaos.io/docs/getstarted/ 
   icon:
-    - url: 
-      mediatype: ""
+    - url: https://raw.githubusercontent.com/litmuschaos/charthub.litmuschaos.io/master/public/litmus.ico
+      mediatype: image/png
   chaosexpcrdlink: https://github.com/resilience-engineering/chaos-charts-test/blob/master/charts/generic1/pod-cpu-hog/experiment.yaml

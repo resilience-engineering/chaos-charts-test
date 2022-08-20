@@ -22,7 +22,7 @@ spec:
       email:egayathrir112@gmail.com 
   minKubeVersion: 1.12.0 
   provider: 
-    name: gayathri
+    name: Dayathri
   labels:
     app.kubernetes.io/component: chartserviceversion
     app.kubernetes.io/version: latest
@@ -30,6 +30,6 @@ spec:
     - name:Documentation 
       url:https://docs.litmuschaos.io/docs/getstarted/ 
   icon:
-    - url: 
-      mediatype: ""
+    - url: https://raw.githubusercontent.com/litmuschaos/charthub.litmuschaos.io/master/public/litmus.ico
+      mediatype: image/png
   chaosexpcrdlink: https://raw.githubusercontent.com/litmuschaos/chaos-charts/master/charts/generic1/pod-cpu-hog/experiment.yaml
