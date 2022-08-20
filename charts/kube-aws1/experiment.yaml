@@ -59,7 +59,7 @@ spec:
       value: ''
 
     - name: LIB
-      value: ''
+      value: 'litmus'
 
     - name: RAMP_TIME
       value: ''
