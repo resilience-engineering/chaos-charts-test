@@ -50,15 +50,15 @@ spec:
     imagePullPolicy: Always
     args:
     - -c
-    - ./experiments -name ec2-terminate-by-id
+    - ./experiments -name 
     command:
     - /bin/bash
     env:
     - name: TOTAL_CHAOS_DURATION
-      value: '30'
+      value: ''
 
     - name: CHAOS_INTERVAL
-      value: '30'
+      value: ''
 
     # Period to wait before and after injection of chaos in sec
     - name: RAMP_TIME
