@@ -1,35 +1,31 @@
 apiVersion: litmuchaos.io/v1alpha1
 kind: ChartServiceVersion
 metadata:
-  name: pod-cpu-hog 
+  name: generic1 
   version: 0.1.0
   annotations:
-    categories: generic
+    categories: generic1
 spec:
-  displayName: pod-cpu-hog 
+  displayName:  chaos
   categoryDescription: >
     it inject particuar pod cpu and then it  waits for the chaos duration and reverts the chaos 
+  experiments:
+  - pod-cpu-hog
   keywords: 
     - "pods" 
     - "kubernetes" 
     - "pod-cpu-hog" 
     - "exec" 
-  platforms: 
-    - "Minikube" 
-  maturity: alpha
   maintainers: 
     - name:gayathri 
       email:egayathrir112@gmail.com 
   minKubeVersion: 1.12.0 
   provider: 
     name: gayathri
-  labels:
-    app.kubernetes.io/component: chartserviceversion
-    app.kubernetes.io/version: latest
   links: 
     - name:Documentation 
-      url:https://docs.litmuschaos.io/docs/getstarted/ 
+      url:https://docs.litmuschaos.io/docs/getstarted/  
   icon:
     - url: 
       mediatype: ""
-  chaosexpcrdlink: https://raw.githubusercontent.com/litmuschaos/chaos-charts/master/charts/generic/pod-cpu-hog/experiment.yaml
+  chaosexpcrdlink: https://raw.githubusercontent.com/litmuschaos/chaos-charts/master/charts/generic1/experiments.yaml

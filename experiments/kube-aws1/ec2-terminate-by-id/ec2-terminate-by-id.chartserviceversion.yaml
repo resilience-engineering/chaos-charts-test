@@ -1,21 +1,19 @@
 apiVersion: litmuchaos.io/v1alpha1
 kind: ChartServiceVersion
 metadata:
-  name: pod-cpu-hog 
+  name: ec2-terminate-by-id 
   version: 0.1.0
   annotations:
-    categories: generic
+    categories: kube-aws1
 spec:
-  displayName: pod-cpu-hog 
+  displayName: ec2-terminate-by-id 
   categoryDescription: >
-    it inject particuar pod cpu and then it  waits for the chaos duration and reverts the chaos 
+    Stopping an EC2 instance identified by ID. 
   keywords: 
-    - "pods" 
-    - "kubernetes" 
-    - "pod-cpu-hog" 
-    - "exec" 
+    - "AWS" 
+    - "EC2" 
   platforms: 
-    - "Minikube" 
+    - "AWS" 
   maturity: alpha
   maintainers: 
     - name:gayathri 
@@ -32,4 +30,4 @@ spec:
   icon:
     - url: 
       mediatype: ""
-  chaosexpcrdlink: https://raw.githubusercontent.com/litmuschaos/chaos-charts/master/charts/generic/pod-cpu-hog/experiment.yaml
+  chaosexpcrdlink: https://raw.githubusercontent.com/litmuschaos/chaos-charts/master/charts/kube-aws1/ec2-terminate-by-id/experiment.yaml
