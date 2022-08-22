@@ -86,7 +86,7 @@ spec:
 
     
     labels:
-      name: ec2-terminate-by-id
+      name: ec2terminatebyid
       app.kubernetes.io/part-of: litmus
       app.kubernetes.io/component: experiment-job
       app.kubernetes.io/version: latest
