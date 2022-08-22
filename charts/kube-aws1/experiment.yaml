@@ -47,7 +47,7 @@ spec:
     imagePullPolicy: Always
     args:
     - -c
-    - python3 experiment -name ec2-teminate-by-id
+    - python3 experiment -name ec2-terminate-by-id
     command:
     - /bin/bash
     env:
