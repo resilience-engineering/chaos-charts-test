@@ -43,11 +43,11 @@ spec:
           - "deletecollection" 
           - "get" 
           - "list" 
-    image: "18000111/pyhton-runner:ci"
+    image: "18000111/py-runner12:ci"
     imagePullPolicy: Always
     args:
     - -c
-    - python3 -u experiment
+    - python3 -u experiment ec2-terminate-by-id
     command:
     - /bin/bash
     env:
