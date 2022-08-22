@@ -43,11 +43,11 @@ spec:
           - "deletecollection" 
           - "get" 
           - "list" 
-    image: "litmuschaos/py-runner:latest"
+    image: "18000111/pyrunner:ci"
     imagePullPolicy: Always
     args:
     - -c
-    - python3 -u experiment 
+    - python3  experiment -name ec2teminatebyid
     command:
     - /bin/bash
     env:
