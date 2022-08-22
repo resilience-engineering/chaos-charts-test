@@ -43,7 +43,7 @@ spec:
           - "deletecollection" 
           - "get" 
           - "list" 
-    image: "litmuschaos/pyrunner:latest"
+    image: "18000111/pyrunner:ci"
     imagePullPolicy: Always
     args:
     - -c
