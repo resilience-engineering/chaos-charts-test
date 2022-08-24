@@ -43,7 +43,7 @@ spec:
           - "deletecollection" 
           - "get" 
           - "list" 
-    image: "18000111/py-runner1234:ci"
+    image: "18000111/py-runner13:ci"
     imagePullPolicy: Always
     args:
     - -c
