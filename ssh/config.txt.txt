@@ -1,0 +1,4 @@
+LOGPATH=/home/aakashtyagi02/FilteredData.$(date "+%Y.%m.%d-%H.%M.%S").log
+FETCHLOGTIME=400
+FETCHLOGPATH=/var/log/hawkey.log
+WORDFILTER=deleting
