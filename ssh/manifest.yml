@@ -1,0 +1,286 @@
+kind: Workflow
+apiVersion: argoproj.io/v1alpha1
+metadata:
+  name: custom-1662723819
+  namespace: litmus
+  creationTimestamp: null
+  labels:
+    cluster_id: 279c6f2e-2ea7-42f9-a4e8-5105c67f5f88
+    subject: custom_litmus
+    workflow_id: bdba60be-6220-403b-be53-1c776a632f65
+    workflows.argoproj.io/controller-instanceid: 279c6f2e-2ea7-42f9-a4e8-5105c67f5f88
+spec:
+  templates:
+    - name: custom-chaos
+      inputs: {}
+      outputs: {}
+      metadata: {}
+      steps:
+        - - name: install-chaos-experiments
+            template: install-chaos-experiments
+            arguments: {}
+        - - name: pod-delete-fy2
+            template: pod-delete-fy2
+            arguments: {}
+    - name: install-chaos-experiments
+      inputs:
+        artifacts:
+          - name: pod-delete-fy2
+            path: /tmp/pod-delete-fy2.yaml
+            raw:
+              data: >
+                apiVersion: litmuschaos.io/v1alpha1
+
+                description:
+                  message: |
+                    Deletes a pod belonging to a deployment/statefulset/daemonset
+                kind: ChaosExperiment
+
+                metadata:
+                  name: pod-delete
+                  labels:
+                    name: pod-delete
+                    app.kubernetes.io/part-of: litmus
+                    app.kubernetes.io/component: chaosexperiment
+                    app.kubernetes.io/version: 2.11.0
+                spec:
+                  definition:
+                    scope: Namespaced
+                    permissions:
+                      - apiGroups:
+                          - ""
+                        resources:
+                          - pods
+                        verbs:
+                          - create
+                          - delete
+                          - get
+                          - list
+                          - patch
+                          - update
+                          - deletecollection
+                      - apiGroups:
+                          - ""
+                        resources:
+                          - events
+                        verbs:
+                          - create
+                          - get
+                          - list
+                          - patch
+                          - update
+                      - apiGroups:
+                          - ""
+                        resources:
+                          - configmaps
+                        verbs:
+                          - get
+                          - list
+                      - apiGroups:
+                          - ""
+                        resources:
+                          - pods/log
+                        verbs:
+                          - get
+                          - list
+                          - watch
+                      - apiGroups:
+                          - ""
+                        resources:
+                          - pods/exec
+                        verbs:
+                          - get
+                          - list
+                          - create
+                      - apiGroups:
+                          - apps
+                        resources:
+                          - deployments
+                          - statefulsets
+                          - replicasets
+                          - daemonsets
+                        verbs:
+                          - list
+                          - get
+                      - apiGroups:
+                          - apps.openshift.io
+                        resources:
+                          - deploymentconfigs
+                        verbs:
+                          - list
+                          - get
+                      - apiGroups:
+                          - ""
+                        resources:
+                          - replicationcontrollers
+                        verbs:
+                          - get
+                          - list
+                      - apiGroups:
+                          - argoproj.io
+                        resources:
+                          - rollouts
+                        verbs:
+                          - list
+                          - get
+                      - apiGroups:
+                          - batch
+                        resources:
+                          - jobs
+                        verbs:
+                          - create
+                          - list
+                          - get
+                          - delete
+                          - deletecollection
+                      - apiGroups:
+                          - litmuschaos.io
+                        resources:
+                          - chaosengines
+                          - chaosexperiments
+                          - chaosresults
+                        verbs:
+                          - create
+                          - list
+                          - get
+                          - patch
+                          - update
+                          - delete
+                    image: litmuschaos/go-runner:2.11.0
+                    imagePullPolicy: Always
+                    args:
+                      - -c
+                      - ./experiments -name pod-delete
+                    command:
+                      - /bin/bash
+                    env:
+                      - name: TOTAL_CHAOS_DURATION
+                        value: "15"
+                      - name: RAMP_TIME
+                        value: ""
+                      - name: FORCE
+                        value: "true"
+                      - name: CHAOS_INTERVAL
+                        value: "5"
+                      - name: PODS_AFFECTED_PERC
+                        value: ""
+                      - name: LIB
+                        value: litmus
+                      - name: TARGET_PODS
+                        value: ""
+                      - name: NODE_LABEL
+                        value: ""
+                      - name: SEQUENCE
+                        value: parallel
+                    labels:
+                      name: pod-delete
+                      app.kubernetes.io/part-of: litmus
+                      app.kubernetes.io/component: experiment-job
+                      app.kubernetes.io/version: 2.11.0
+      outputs: {}
+      metadata: {}
+      container:
+        name: ""
+        image: litmuschaos/k8s:2.11.0
+        command:
+          - sh
+          - -c
+        args:
+          - kubectl apply -f /tmp/pod-delete-fy2.yaml -n
+            {{workflow.parameters.adminModeNamespace}} &&  sleep 30
+        resources: {}
+    - name: pod-delete-fy2
+      inputs:
+        artifacts:
+          - name: pod-delete-fy2
+            path: /tmp/chaosengine-pod-delete-fy2.yaml
+            raw:
+              data: |
+                apiVersion: litmuschaos.io/v1alpha1
+                kind: ChaosEngine
+                metadata:
+                  namespace: "{{workflow.parameters.adminModeNamespace}}"
+                  generateName: pod-delete-fy2
+                  labels:
+                    instance_id: 1880e3a4-d85d-4b33-836d-e146334c2a5c
+                spec:
+                  appinfo:
+                    appns: default
+                    applabel: app=nginx
+                    appkind: deployment
+                  engineState: active
+                  chaosServiceAccount: litmus-admin
+                  experiments:
+                    - name: pod-delete
+                      spec:
+                        components:
+                          env:
+                            - name: TOTAL_CHAOS_DURATION
+                              value: "30"
+                            - name: CHAOS_INTERVAL
+                              value: "10"
+                            - name: FORCE
+                              value: "false"
+                            - name: PODS_AFFECTED_PERC
+                              value: ""
+                        probe:
+                          - name: cmd
+                            type: cmdProbe
+                            mode: SOT
+                            runProperties:
+                              probeTimeout: 2
+                              retry: 1
+                              interval: 1
+                              probePollingInterval: 2
+                              initialDelaySeconds: 1
+                              stopOnFailure: false
+                            cmdProbe/inputs:
+                              command: sh readlogs.sh
+                              source:
+                                image: 18000111/env:v1
+                                hostNetwork: true
+                                imagePullPolicy: Always
+                                privileged: true
+                                env:
+                                - name: SECRET_USERNAME
+                                  valueFrom:
+                                    secretKeyRef:
+                                      name: new-secret11
+                                      key: username
+                                - name: SECRET_PASSWORD
+                                  valueFrom:
+                                    secretKeyRef:
+                                      name: new-secret11
+                                      key: password
+                                - name: SECRET_HOSTS
+                                  valueFrom:
+                                    secretKeyRef:
+                                      name: new-secret11
+                                      key: host
+                              comparator:
+                                type: string
+                                criteria: contains
+                                value: Sep
+      outputs: {}
+      metadata:
+        labels:
+          weight: "10"
+      container:
+        name: ""
+        image: litmuschaos/litmus-checker:2.11.0
+        args:
+          - -file=/tmp/chaosengine-pod-delete-fy2.yaml
+          - -saveName=/tmp/engine-name
+        resources: {}
+  entrypoint: custom-chaos
+  arguments:
+    parameters:
+      - name: adminModeNamespace
+        value: litmus
+  serviceAccountName: argo-chaos
+  securityContext:
+    runAsUser: 1000
+    runAsNonRoot: true
+status:
+  ? startedAt
+  ? finishedAt
